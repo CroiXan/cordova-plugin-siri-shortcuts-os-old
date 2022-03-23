@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-siri-shortcuts-os",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-siri-shortcuts-os",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "",
+  "license": "MIT",
+  "description": ""
+}
