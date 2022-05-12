@@ -72,9 +72,23 @@ import IntentsUI
                 for stringIdentifier in stringIdentifiers {
                     persistentIdentifiers.append(NSUserActivityPersistentIdentifier(stringIdentifier))
                 }
+                
+                let jsonEncoder = JSONEncoder()
+                let jsonData = try jsonEncoder.encode(  NSUserActivityPersistentIdentifier(stringIdentifiers.first) )
+                let json = String(data: jsonData, encoding: String.Encoding.utf16)
+                
+                let returnData = [
+                        "Length": persistentIdentifiers.count,
+                        "persistentIdentifier": json
+                    ]
 
+                var pluginResult = CDVPluginResult(
+                        status: CDVCommandStatus_OK,
+                        messageAs: returnData as [AnyHashable: Any]
+                    )
+                
                 if(!persistentIdentifiers.isEmpty){
-                    self.sendStatusOk(command)
+                    self.send(pluginResult: pluginResult!, command: command)
                 }else{
                     self.sendStatusError(command)
                 }
